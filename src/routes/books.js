@@ -21,8 +21,9 @@ router.post("/", (req, res) => {
 router.get("/search", (req, res) => {
   request
     .get(
-      `https://www.goodreads.com/search/index.xml?key=${process.env
-        .GOODREADS_KEY}&q=${req.query.q}`
+      `https://www.goodreads.com/search/index.xml?key=${
+        process.env.GOODREADS_KEY
+      }&q=${req.query.q}`
     )
     .then(result =>
       parseString(result, (err, goodreadsResult) =>
@@ -45,8 +46,9 @@ router.get("/fetchPages", (req, res) => {
 
   request
     .get(
-      `https://www.goodreads.com/book/show.xml?key=${process.env
-        .GOODREADS_KEY}&id=${goodreadsId}`
+      `https://www.goodreads.com/book/show.xml?key=${
+        process.env.GOODREADS_KEY
+      }&id=${goodreadsId}`
     )
     .then(result =>
       parseString(result, (err, goodreadsResult) => {
