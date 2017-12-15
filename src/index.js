@@ -39,4 +39,4 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.listen(8080, () => console.log("Running on localhost:8080"));
+app.listen(8080, () => console.log("\n \n \n Running on localhost:8080 \n \n \n"));

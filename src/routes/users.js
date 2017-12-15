@@ -15,8 +15,12 @@ router.post("/", (req, res) => {
     .then(userRecord => {
       sendConfirmationEmail(userRecord);
       res.json({ user: userRecord.toAuthJSON() });
+      console.log("User ", req.body.user.email, "Signed Up.");
     })
-    .catch(err => res.status(400).json({ errors: parseErrors(err.errors) }));
+    .catch(err => {
+      res.status(400).json({ errors: parseErrors(err.errors) });
+      console.log("User ", req.body.user.email, "Failed to Sign Up.");
+    });
 });
 
 export default router;
