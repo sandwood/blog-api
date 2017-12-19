@@ -125,15 +125,16 @@ router.get("/searchPost", (req, res) => {
 });
 
 router.post("/searchPost", (req, res) => {
-  const query = { title: { $regex: req.body.post.title, $options: "i" } };
+  console.log(req.body.title);
+  const query = { title: { $regex: req.body.title, $options: "i" } };
   Post.find(query)
     .sort({ updatedAt: -1 })
-    .exec((error, posts) => {
+    .exec((error, post) => {
       if (error) {
         console.log("\n ", error);
         return res.status(error.code).json({ error });
       }
-      return res.status(200).json({ posts });
+      return res.status(200).json({ post });
     });
 });
 
